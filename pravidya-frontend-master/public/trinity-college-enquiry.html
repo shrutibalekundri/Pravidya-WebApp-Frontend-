@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trinity College – Enquiry Form</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #2563EB 0%, #1E3A8A 100%);
+      color: #1E293B;
+      min-height: 100vh;
+    }
+    .page {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 15px;
+      min-height: 100vh;
+    }
+    .form-card {
+      background: #FFFFFF;
+      width: 100%;
+      max-width: 650px;
+      border-radius: 12px;
+      padding: 30px 35px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      border: 1px solid #E2E8F0;
+    }
+    .form-card h2 {
+      text-align: center;
+      color: #2563EB;
+      margin: 0 0 5px;
+      font-size: 1.6rem;
+      font-weight: 700;
+    }
+    .subtitle {
+      text-align: center;
+      font-size: 14px;
+      color: #64748B;
+      margin-bottom: 25px;
+    }
+    .section { margin-bottom: 0; }
+    .section-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: #2563EB;
+      margin: 25px 0 10px;
+      border-left: 4px solid #2563EB;
+      padding-left: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+    }
+    .section-title:first-of-type { margin-top: 0; }
+    label {
+      display: block;
+      font-size: 13px;
+      font-weight: 500;
+      color: #334155;
+      margin-top: 5px;
+      margin-bottom: 4px;
+    }
+    label i {
+      width: 18px;
+      margin-right: 6px;
+      color: #2563EB;
+    }
+    label .optional { font-weight: 400; color: #64748B; }
+    input, textarea, select {
+      width: 100%;
+      padding: 10px 12px;
+      border-radius: 8px;
+      border: 1px solid #E2E8F0;
+      margin-top: 5px;
+      margin-bottom: 15px;
+      font-size: 14px;
+      font-family: inherit;
+      color: #1E293B;
+      background: #FFFFFF;
+      transition: all 0.3s ease;
+    }
+    input::placeholder, textarea::placeholder {
+      color: #94A3B8;
+    }
+    input:focus, textarea:focus, select:focus {
+      border-color: #2563EB;
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+    }
+    textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+    button[type="submit"] {
+      width: 100%;
+      padding: 12px;
+      background: linear-gradient(90deg, #2563EB, #1D4ED8);
+      color: white;
+      font-size: 15px;
+      font-weight: 600;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 15px;
+      transition: 0.3s;
+      font-family: inherit;
+    }
+    button[type="submit"]:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 15px rgba(37, 99, 235, 0.3);
+    }
+    button[type="submit"] i {
+      margin-right: 8px;
+    }
+    button[type="submit"]:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+      transform: none;
+    }
+    .msg {
+      margin-top: 15px;
+      padding: 12px 14px;
+      border-radius: 8px;
+      display: none;
+      font-size: 14px;
+      font-weight: 500;
+    }
+    .msg.success {
+      background: #DCFCE7;
+      color: #166534;
+      display: block;
+      border: 1px solid #86EFAC;
+    }
+    .msg.error {
+      background: #FEE2E2;
+      color: #991B1B;
+      display: block;
+      border: 1px solid #FCA5A5;
+    }
+    .footer {
+      margin-top: 20px;
+      text-align: center;
+      font-size: 12px;
+      color: #64748B;
+    }
+    .footer i { margin-right: 4px; color: #2563EB; }
+    .code-hint {
+      font-size: 12px;
+      color: #64748B;
+      margin: -8px 0 15px;
+      line-height: 1.4;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="form-card">
+      <h2>Trinity College</h2>
+      <p class="subtitle">Submit your enquiry — we'll get back to you soon.</p>
+
+      <form id="enquiry-form">
+        <div class="section">
+          <div class="section-title">College / Institution</div>
+          <label for="enquiryCode"><i class="fa fa-building"></i> Pravidya Enquiry Code</label>
+          <input type="text" id="enquiryCode" name="enquiryCode" placeholder="e.g. ABCD-X7K2" autocomplete="off" />
+          <p class="code-hint">Get this from Pravidya Admin → Institutions → your college → Copy. Or leave blank if using college name.</p>
+        </div>
+
+        <div class="section">
+          <div class="section-title">Student Details</div>
+          <label for="studentName"><i class="fa fa-user-graduate"></i> Student name *</label>
+          <input type="text" id="studentName" name="studentName" required placeholder="e.g. Rahul Kumar" />
+
+          <label for="dateOfBirth"><i class="fa fa-calendar"></i> Date of birth <span class="optional">(optional)</span></label>
+          <input type="date" id="dateOfBirth" name="dateOfBirth" />
+
+          <label for="gender"><i class="fa fa-venus-mars"></i> Gender <span class="optional">(optional)</span></label>
+          <select id="gender" name="gender">
+            <option value="">Select</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+          </select>
+
+          <label for="currentClass"><i class="fa fa-book"></i> Current class <span class="optional">(optional)</span></label>
+          <input type="text" id="currentClass" name="currentClass" placeholder="e.g. Class 10" />
+
+          <label for="gradeInterested"><i class="fa fa-graduation-cap"></i> Grade / class interested in *</label>
+          <input type="text" id="gradeInterested" name="gradeInterested" required placeholder="e.g. Class 11" />
+
+          <label for="academicYear"><i class="fa fa-calendar-alt"></i> Academic year <span class="optional">(optional)</span></label>
+          <input type="text" id="academicYear" name="academicYear" placeholder="e.g. 2025-26" />
+        </div>
+
+        <div class="section">
+          <div class="section-title">Parent / Guardian Details</div>
+          <label for="parentName"><i class="fa fa-user"></i> Parent / guardian name <span class="optional">(optional)</span></label>
+          <input type="text" id="parentName" name="parentName" placeholder="e.g. Suresh Kumar" />
+
+          <label for="phone"><i class="fa fa-phone"></i> Phone *</label>
+          <input type="tel" id="phone" name="phone" required placeholder="e.g. 9876543210" />
+
+          <label for="parentEmail"><i class="fa fa-envelope"></i> Parent / guardian email <span class="optional">(optional)</span></label>
+          <input type="email" id="parentEmail" name="parentEmail" placeholder="e.g. parent@example.com" />
+
+          <label for="parentCity"><i class="fa fa-map-marker-alt"></i> City <span class="optional">(optional)</span></label>
+          <input type="text" id="parentCity" name="parentCity" placeholder="e.g. Mumbai" />
+
+          <label for="preferredLanguage"><i class="fa fa-language"></i> Preferred language <span class="optional">(optional)</span></label>
+          <input type="text" id="preferredLanguage" name="preferredLanguage" placeholder="e.g. English, Hindi" />
+        </div>
+
+        <div class="section">
+          <div class="section-title">Additional Information</div>
+          <label for="notes"><i class="fa fa-comment-dots"></i> Notes <span class="optional">(optional)</span></label>
+          <textarea id="notes" name="notes" rows="3" placeholder="Any other details or questions..."></textarea>
+        </div>
+
+        <input type="hidden" id="institutionId" name="institutionId" value="" />
+        <input type="hidden" id="sourceCollege" name="sourceCollege" value="Trinity College" />
+
+        <button type="submit" id="submit-btn"><i class="fa fa-paper-plane"></i> Submit enquiry</button>
+      </form>
+
+      <div id="msg" class="msg" role="alert"></div>
+      <p class="footer"><i class="fa fa-shield-alt"></i> Powered by Pravidya</p>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var form = document.getElementById('enquiry-form');
+      var msg = document.getElementById('msg');
+      var submitBtn = document.getElementById('submit-btn');
+
+      var API_BASE = '';
+      var API_KEY = 'TRINITY123';
+
+      var params = new URLSearchParams(window.location.search);
+      var codeFromUrl = params.get('code');
+      if (codeFromUrl && form.enquiryCode) {
+        form.enquiryCode.value = codeFromUrl.trim();
+      }
+
+      function showMessage(text, isError) {
+        msg.textContent = text;
+        msg.className = 'msg ' + (isError ? 'error' : 'success');
+        msg.style.display = 'block';
+      }
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        submitBtn.disabled = true;
+        msg.style.display = 'none';
+
+        var payload = {
+          studentName: form.studentName.value.trim(),
+          phone: form.phone.value.trim(),
+          gradeInterested: form.gradeInterested.value.trim()
+        };
+
+        var enquiryCodeVal = form.enquiryCode && form.enquiryCode.value ? form.enquiryCode.value.trim() : '';
+        if (enquiryCodeVal) payload.enquiryCode = enquiryCodeVal;
+
+        var institutionIdVal = form.institutionId && form.institutionId.value ? form.institutionId.value.trim() : '';
+        var sourceCollegeVal = form.sourceCollege && form.sourceCollege.value ? form.sourceCollege.value.trim() : '';
+        if (institutionIdVal && institutionIdVal !== 'REPLACE_WITH_TRINITY_INSTITUTION_ID') payload.institutionId = institutionIdVal;
+        if (sourceCollegeVal) payload.sourceCollege = sourceCollegeVal;
+
+        if (form.parentName && form.parentName.value.trim()) payload.parentName = form.parentName.value.trim();
+        if (form.parentEmail && form.parentEmail.value.trim()) payload.parentEmail = form.parentEmail.value.trim();
+        if (form.parentCity && form.parentCity.value.trim()) payload.parentCity = form.parentCity.value.trim();
+        if (form.preferredLanguage && form.preferredLanguage.value.trim()) payload.preferredLanguage = form.preferredLanguage.value.trim();
+        if (form.dateOfBirth && form.dateOfBirth.value.trim()) payload.dateOfBirth = form.dateOfBirth.value.trim();
+        if (form.gender && form.gender.value) payload.gender = form.gender.value;
+        if (form.currentClass && form.currentClass.value.trim()) payload.currentClass = form.currentClass.value.trim();
+        if (form.academicYear && form.academicYear.value.trim()) payload.academicYear = form.academicYear.value.trim();
+        if (form.notes && form.notes.value.trim()) payload.notes = form.notes.value.trim();
+
+        fetch((API_BASE || '') + '/api/external/college-enquiry', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'x-api-key': API_KEY
+          },
+          body: JSON.stringify(payload)
+        })
+          .then(function (res) { return res.json().then(function (data) { return { ok: res.ok, data: data }; }); })
+          .then(function (result) {
+            if (result.ok && result.data.success) {
+              showMessage('Enquiry submitted successfully. We will get in touch soon.');
+              form.reset();
+              if (codeFromUrl && form.enquiryCode) form.enquiryCode.value = codeFromUrl.trim();
+            } else {
+              showMessage(result.data.message || 'Something went wrong. Please try again.', true);
+            }
+          })
+          .catch(function () {
+            showMessage('Network error. Please try again later.', true);
+          })
+          .finally(function () {
+            submitBtn.disabled = false;
+          });
+      });
+    })();
+  </script>
+</body>
+</html>
